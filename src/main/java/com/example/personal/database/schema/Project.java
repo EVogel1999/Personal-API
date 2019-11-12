@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.List;
 
 public class Project {
+    public static final String TYPE = "Project";
+
     private ObjectId _id;
     private String name;
     private String description;
@@ -120,9 +122,8 @@ public class Project {
         Document document = new Document();
 
         if (_id == null)
-            document.append("_id", new ObjectId());
-        else
-            document.append("_id", _id);
+            _id = new ObjectId();
+        document.append("_id", _id);
         document.append("name", name);
         document.append("description", description);
         document.append("start", start);
@@ -130,7 +131,8 @@ public class Project {
             document.append("end", end);
         if (image != null)
             document.append("image", image);
-        document.append("tags", tags);
+        if (tags != null)
+            document.append("tags", tags);
         if (repository != null)
             document.append("repository", repository);
 

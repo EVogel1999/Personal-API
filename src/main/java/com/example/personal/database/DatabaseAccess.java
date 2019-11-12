@@ -6,6 +6,9 @@ import com.mongodb.client.MongoDatabase;
 import io.github.cdimascio.dotenv.Dotenv;
 
 public class DatabaseAccess {
+    public static final String PERSONAL_DB = "personal";
+    public static final String PROJECT_COLLECTION = "project";
+
     private static DatabaseAccess access;
 
     private MongoClient client;
