@@ -62,6 +62,11 @@ public class ProjectService {
         return project;
     }
 
+    public void deleteProject(String id) throws Exception {
+        getProject(id);
+        collection.findOneAndDelete(eq("_id", new ObjectId(id)));
+    }
+
     public void checkMissingFields(Project project) throws Exception {
         List<String> missing = new ArrayList<>();
         if (project.getDescription() == null)
