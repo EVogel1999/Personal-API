@@ -30,7 +30,7 @@ public class ProjectController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getProject(@RequestParam String id) {
+    public ResponseEntity<Object> getProject(@PathVariable String id) {
         try {
             return new ResponseEntity<>(service.getProject(id), OK);
         } catch (NotFoundError error) {
@@ -41,7 +41,7 @@ public class ProjectController {
     }
 
     @PostMapping()
-    public ResponseEntity<Object> createProject(@RequestBody Project project) {
+    public ResponseEntity<Object> createProject(@PathVariable Project project) {
         try {
             return new ResponseEntity<>(service.createProject(project), CREATED);
         } catch (BadRequestError error) {
@@ -52,7 +52,7 @@ public class ProjectController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Object> updateProject(@RequestParam String id, @RequestBody Project project) {
+    public ResponseEntity<Object> updateProject(@PathVariable String id, @RequestBody Project project) {
         try {
             return new ResponseEntity<>(service.updateProject(id, project), NO_CONTENT);
         } catch (NotFoundError error) {
@@ -65,7 +65,7 @@ public class ProjectController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteProject(@RequestParam String id) {
+    public ResponseEntity<Object> deleteProject(@PathVariable String id) {
         try {
             service.deleteProject(id);
             return new ResponseEntity<>(NO_CONTENT);
