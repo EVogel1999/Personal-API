@@ -22,8 +22,8 @@ public class DatabaseAccess {
 
     private DatabaseAccess() {
         Dotenv dotenv = Dotenv.load();
-        String uri = dotenv.get("MONGO_CONNECTION");
-        client = new MongoClient(new MongoClientURI(uri));
+        MongoClientURI uri = new MongoClientURI(dotenv.get("MONGO_CONNECTION"));
+        client = new MongoClient(uri);
     }
 
     public MongoDatabase getDatabase(String db_name) {
