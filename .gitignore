@@ -4,3 +4,4 @@ build
 out
 .gradle
 .env
+firebase-admin-creds.json
